@@ -1,0 +1,21 @@
+.grid-container {
+  display: grid;
+  
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 15px; 
+  padding: 20px;
+  background-color: #46d811; 
+}
+
+.item-1 { 
+  background-color: #ff6b6b; 
+}
+.item-2 { 
+  background-color: #4ecdc4; 
+}
+.item-3 { 
+  background-color: #45b7d1; 
+}
+.item-4 { 
+  background-color: #96ceb4; 
+}
