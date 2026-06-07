@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 text-center py-5">
+        <div class="mb-4">
+            <i class="bi bi-shield-lock-fill text-primary" style="font-size: 4rem;"></i>
+        </div>
+        <h1 class="fw-bold mb-3">ASP.NET Identity Demo</h1>
+        <p class="lead text-muted mb-4">
+            Sistema completo de autenticación y autorización con roles, 
+            gestión de usuarios y seguridad integrada.
+        </p>
+
+        @if (!User.Identity!.IsAuthenticated)
+        {
+            <div class="d-flex gap-3 justify-content-center">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg px-4">
+                    <i class="bi bi-person-plus me-2"></i>Crear cuenta
+                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success d-inline-block px-4">
+                <i class="bi bi-check-circle me-2"></i>
+                Sesión activa como <strong>@User.Identity.Name</strong>
+                @if (User.IsInRole("Admin"))
+                {
+                    <span class="badge bg-danger ms-2">Admin</span>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row g-4 mt-2">
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <div class="text-primary mb-3"><i class="bi bi-person-check-fill fs-2"></i></div>
+            <h5 class="fw-semibold">Autenticación</h5>
+            <p class="text-muted small">Registro, login con bloqueo por intentos fallidos y gestión de sesión segura.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <div class="text-primary mb-3"><i class="bi bi-tags-fill fs-2"></i></div>
+            <h5 class="fw-semibold">Roles y Autorización</h5>
+            <p class="text-muted small">Sistema de roles (Admin, Manager, User) con acceso controlado por políticas.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <div class="text-primary mb-3"><i class="bi bi-people-fill fs-2"></i></div>
+            <h5 class="fw-semibold">Gestión de Usuarios</h5>
+            <p class="text-muted small">Panel de administración para ver, editar, asignar roles y eliminar usuarios.</p>
+        </div>
+    </div>
+</div>
