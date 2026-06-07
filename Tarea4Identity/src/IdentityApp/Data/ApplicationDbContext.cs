@@ -13,7 +13,6 @@ namespace IdentityApp.Data
         {
             base.OnModelCreating(builder);
 
-            // Rename default Identity tables (optional, clean naming)
             builder.Entity<ApplicationUser>().ToTable("Users");
         }
     }

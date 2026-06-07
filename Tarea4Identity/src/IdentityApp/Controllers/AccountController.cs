@@ -18,7 +18,6 @@ namespace IdentityApp.Controllers
             _signInManager = signInManager;
         }
 
-        // ── Register ──────────────────────────────────────────
         [HttpGet]
         public IActionResult Register() =>
             User.Identity!.IsAuthenticated ? RedirectToAction("Index", "Home") : View();
@@ -53,7 +52,6 @@ namespace IdentityApp.Controllers
             return View(model);
         }
 
-        // ── Login ─────────────────────────────────────────────
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
@@ -87,7 +85,6 @@ namespace IdentityApp.Controllers
             return View(model);
         }
 
-        // ── Logout ────────────────────────────────────────────
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,7 +95,6 @@ namespace IdentityApp.Controllers
             return RedirectToAction("Login");
         }
 
-        // ── Profile ───────────────────────────────────────────
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Profile()
@@ -111,7 +107,6 @@ namespace IdentityApp.Controllers
             return View(user);
         }
 
-        // ── Change Password ───────────────────────────────────
         [Authorize]
         [HttpGet]
         public IActionResult ChangePassword() => View();
@@ -140,7 +135,6 @@ namespace IdentityApp.Controllers
             return View(model);
         }
 
-        // ── Access Denied ─────────────────────────────────────
         public IActionResult AccessDenied() => View();
     }
 }

@@ -20,7 +20,6 @@ namespace IdentityApp.Controllers
             _roleManager = roleManager;
         }
 
-        // ── User List ─────────────────────────────────────────
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -43,7 +42,6 @@ namespace IdentityApp.Controllers
             return View(model);
         }
 
-        // ── Edit User ─────────────────────────────────────────
         [HttpGet]
         public async Task<IActionResult> EditUser(string id)
         {
@@ -81,7 +79,6 @@ namespace IdentityApp.Controllers
 
             await _userManager.UpdateAsync(user);
 
-            // Update roles
             var currentRoles = await _userManager.GetRolesAsync(user);
             await _userManager.RemoveFromRolesAsync(user, currentRoles);
 
@@ -92,7 +89,6 @@ namespace IdentityApp.Controllers
             return RedirectToAction("Index");
         }
 
-        // ── Delete User ───────────────────────────────────────
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUser(string id)
@@ -113,7 +109,6 @@ namespace IdentityApp.Controllers
             return RedirectToAction("Index");
         }
 
-        // ── Roles Management ──────────────────────────────────
         public async Task<IActionResult> Roles()
         {
             var roles = await _roleManager.Roles.ToListAsync();

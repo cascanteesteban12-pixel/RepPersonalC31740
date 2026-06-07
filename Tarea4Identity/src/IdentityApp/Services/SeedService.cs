@@ -10,7 +10,7 @@ namespace IdentityApp.Services
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            // ── Create roles ──────────────────────────────────
+            
             string[] roles = { "Admin", "Manager", "User" };
 
             foreach (var role in roles)
@@ -19,7 +19,6 @@ namespace IdentityApp.Services
                     await roleManager.CreateAsync(new IdentityRole(role));
             }
 
-            // ── Create default Admin user ─────────────────────
             const string adminEmail = "admin@identityapp.com";
             const string adminPassword = "Admin@1234";
 
